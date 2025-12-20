@@ -4,6 +4,10 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 
+
+//Import routes
+const authRoutes = require('./routes/authRoutes');
+
 // Load environment variables from .env file
 dotenv.config();
 
@@ -18,6 +22,9 @@ app.use(express.json()); // Parse JSON request bodies
 app.get('/', (req, res) => {
   res.send('Employee Management System API is running! 🚀');
 });
+
+//API Routes
+app.use('/api/auth', authRoutes);
 
 // Connect to MongoDB
 connectDB();

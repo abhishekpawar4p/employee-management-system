@@ -1,4 +1,4 @@
-const User = require('../modules/User');
+const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 
 //Generate JWT Token
@@ -61,7 +61,7 @@ const loginUser = async (req, res) => {
         //Check if user exists
         const user = await User.findOne({ email });
         if (!user) {
-            return res.starus(404).json({message: 'User not found'});
+            return res.status(404).json({message: 'User not found'});
         }
 
         //Compare password
